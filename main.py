@@ -1,64 +1,5 @@
-import random
-
-
-class personagem:
-    def __init__(self, nome):
-        self._pontosDeVida = 100;
-        self._nome = nome;
-        self._forca = 0;
-        self._const = 0;
-        self._tam = 0;
-        self._des = 0;
-        self._apa = 0;
-        self._int = 0;
-        self._pod = 0;
-        self._edu = 0;
-        self._mov = 0;
-
-    def personagemNome(self):
-        nome = self._nome
-        return nome
-
-    def verificaForca(self):
-        forca = self._forca
-        return forca
-
-    def addForca(self, pontos):
-        self.forca += pontos
-
-    def subForca(self, pontos):
-        self._forca -= pontos
-        return print("Você perdeu {} de pontos de Força".format(pontos))
-
-    def verificaPontosdeVida(self):
-        ponto = self._pontosDeVida
-        return ponto
-
-    def addPontosDeVida(self, pontos):
-        self._pontosDeVida += pontos
-
-    def subPontosDeVida(self, pontos):
-        self._pontosDeVida -= pontos
-        print("Seus pontos de vida restante são: {}".format(self.verificaPontosdeVida()))
-
-    def morreu(self):
-        if self.verificaPontosdeVida() > 0:
-            return False
-        else:
-            print("Você Morreu")
-            return True
-
-    def testeDeForca(self):
-        teste = random.randint(1, 101)
-        forca = self.verificaForca()
-        vida = self.verificaPontosdeVida()
-        if forca < teste:
-            print("Você falhou no teste")
-            vida = int((vida / 3))
-            personagem.subPontosDeVida(vida)
-        else:
-            print("Você Passou no teste")
-
+from personagem import personagem
+from resposta import resposta
 
 variavel = 0
 
@@ -70,13 +11,12 @@ while variavel == 0:
         if nome == "":
             print("Nome inválido")
     personagem = personagem(nome)
-    input("Olá {} vamos começar criando seu personagem".format(personagem.personagemNome()))
+    input("Olá {} vamos começar criando seu personagem".format(personagem.nome))
     input("Começaremos Distribuindo seus pontos de habilidade")
     input("Seus pontos de Habilidade são divididos em 9 categorias")
     input("Força, Constituição, Tamanho, Destresa, Aparencia, Inteligência, Poder e Educação")
-    resposta = input("Gostaria de saber mais sobre alguma dessas categorias ? (S/N): ")
-    if resposta == "S":
-        personagem.personagemNome()
+    print("Gostaria de saber mais sobre alguma dessas categorias ? (S/N): ")
+    if resposta():
         referencia = "0"
         while referencia == "0":
             print(
@@ -148,21 +88,28 @@ while variavel == 0:
                 referencia = "0";
             elif referencia == "9":
                 input("Saindo ....")
+
             else:
                 print("Digite um numero valido")
                 referencia = "0";
 
+    input("Os pontos são calcular por meio da rolagem de dados")
+    input("O dado sempre tera uma indicação D seguido do numero de lados")
+    input("Nesse caso usaramos um D6 em 3 rolagens")
+    input("Existem duas maneiras de distribuir os pontos a 'Tradicional' e a 'Por escolha' ")
+    print("Gostaria de Saber mais sobre o tipo de Rolagem ? (S/N) ")
+    if resposta():
+        input("Bla bla bla sobre rolagem")
+
     input("Presione enter para começar a história")
-    while personagem.verificaPontosdeVida() != 0:
+    while personagem.pontosDeVida != 0:
         input("A noite parece começar calma, embora as semanas chuvosas que deixam o clima úmido e pegajoso")
         input(
             "{} vai para a aula com a cabeça abaixada tentando se desviar da fraca chuva que cai sobre a cidade".format(
-                personagem.personagemNome()))
+                personagem.nome))
         input("sua jaqueta já se encontra parcialmente encharcada e seus tênis além de água também possuem barro. ")
-        input("{}:  -Isso que estou apenas indo, imagina depois dessa aula chata".format(personagem.personagemNome()))
-        input("seus pontos de vida são: {}".format(personagem.verificaPontosdeVida()))
-        personagem.testeDeForca()
-        if personagem.morreu(): break
+        input("{}:  -Isso que estou apenas indo, imagina depois dessa aula chata".format(personagem.nome))
+        input("seus pontos de vida são: {}".format(personagem.pontosDeVida))
 
     texto = input("Recomeçar? S/N: ")
     if texto == "S":
