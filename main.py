@@ -1,5 +1,6 @@
 from personagem import personagem
 from resposta import resposta
+from dados import dados
 
 variavel = 0
 
@@ -16,7 +17,7 @@ while variavel == 0:
     input("Seus pontos de Habilidade são divididos em 9 categorias")
     input("Força, Constituição, Tamanho, Destresa, Aparencia, Inteligência, Poder e Educação")
     print("Gostaria de saber mais sobre alguma dessas categorias ? (S/N): ")
-    if resposta():
+    if resposta("S", "N"):
         referencia = "0"
         while referencia == "0":
             print(
@@ -93,13 +94,81 @@ while variavel == 0:
                 print("Digite um numero valido")
                 referencia = "0";
 
-    input("Os pontos são calcular por meio da rolagem de dados")
+    input("Os pontos são calculados por meio da rolagem de dados")
     input("O dado sempre tera uma indicação D seguido do numero de lados")
     input("Nesse caso usaramos um D6 em 3 rolagens")
     input("Existem duas maneiras de distribuir os pontos a 'Tradicional' e a 'Por escolha' ")
-    print("Gostaria de Saber mais sobre o tipo de Rolagem ? (S/N) ")
-    if resposta():
-        input("Bla bla bla sobre rolagem")
+    print("Gostaria de Saber mais sobre os tipos de Rolagem ? (S/N) ")
+    if resposta("S", "N"):
+        input("A Forma tradicional de rolagem, você escolhe para qual habilidade gostaria de fazer a rolagem")
+        input("Em seguida a rolagem dos dados e feita e os pontos são Adicionados na habilidade")
+        input("A rolagem por escolha, primeiro rolamos os dados e depois você decide onde quer adiconar")
+        input("Os pontos de Habilidade")
+    input("Lembrando que os pontos de vida são calculador, pela media de tamanho e constituição")
+    input("Por isso não se pode adicionar pontos diretamente a eles")
+    print("Qual forma vocÊ gostaria de Usar Tradicional ou Escolha? (T/E)")
+    if resposta("T", "E"):
+        input("Vamos começar escolhando a habilidade")
+
+        referencia = 10
+        while referencia != 0:
+            print("\n ")
+            print("Para qual habilidade você gostaria de rolar ? (1) Força, (2) Constituição, (3) Tamanho, (4) Destreza, (5) Aparencia, (6) Inteligência, (7) Poder  (8) Educação")
+            referencia = ""
+            referencia = input()
+            if referencia == "1" and personagem.forca == 0:
+                numero = dados.rolagemHabilidade()
+                personagem.addForca(numero)
+            elif referencia == "2" and personagem.const == 0:
+                numero = dados.rolagemHabilidade()
+                personagem.addConst(numero)
+            elif referencia == "3" and personagem.tam == 0:
+                numero = dados.rolagemHabilidade()
+                personagem.addTam(numero)
+            elif referencia == "4" and personagem.des == 0:
+                numero = dados.rolagemHabilidade()
+                personagem.addDes(numero)
+            elif referencia == "5" and personagem.apa == 0:
+                numero = dados.rolagemHabilidade()
+                personagem.addApa(numero)
+            elif referencia == "6" and personagem.int == 0:
+                numero = dados.rolagemHabilidade()
+                personagem.addInt(numero)
+            elif referencia == "7" and personagem.pod == 0:
+                numero = dados.rolagemHabilidade()
+                personagem.addPod(numero)
+            elif referencia == "8" and personagem.edu == 0:
+                numero = dados.rolagemHabilidade()
+                personagem.addEdu(numero)
+            else:
+                if personagem.forca != 0 and referencia == "1":
+                    print("Você já rolou para força")
+                elif personagem.const != 0 and referencia == "2":
+                    print("Você já rolou para constituição")
+                elif personagem.tam != 0 and referencia == "3":
+                    print("Você já rolou para tamanho")
+                elif personagem.des != 0 and referencia == "4":
+                    print("Você já rolou para destreza")
+                elif personagem.apa != 0 and referencia == "5":
+                    print("Você já rolou para aparência")
+                elif personagem.int != 0 and referencia == "6":
+                    print("Você já rolou para inteligência")
+                elif personagem.pod != 0 and referencia == "7":
+                    print("Você já rolou para poder")
+                elif personagem.edu != 0 and referencia == "8":
+                    print("Você já rolou para educação")
+
+                else: print("Digite uma resposta Valida")
+            if personagem.forca != 0 and personagem.const != 0 and personagem.tam !=0 and personagem.des != 0 and personagem.apa !=0 and personagem.int !=0 and personagem.pod !=0 and personagem.edu != 0:
+                print("Você concluiu a distribuição de pontos")
+                referencia = 0
+                print("\n ")
+                input("Saindo ....")
+
+
+    else:
+        input("Vamos começar rolando os dados")
+        input("Preciona enter para rolar seu primeiro dado")
 
     input("Presione enter para começar a história")
     while personagem.pontosDeVida != 0:

@@ -1,4 +1,4 @@
-import random
+
 
 
 class personagem:
@@ -32,11 +32,113 @@ class personagem:
 
     def addForca(self, pontos):
         self.__forca += pontos
-        return print("Você ganhou {0} de pontos de Força!! \n Sua Forca agora é {1} ".format(pontos, self.forca))
+        return print("Você ganhou {0} de pontos de Força! \nSua Forca agora é {1} ".format(pontos, self.forca))
 
     def subForca(self, pontos):
         self.__forca -= pontos
-        return print("Você perdeu {0} de pontos de Força!! \n Sua Forca agora é {1} ".format(pontos, self.forca))
+        return print("Você perdeu {0} de pontos de Força! \nSua Forca agora é {1} ".format(pontos, self.forca))
+
+    @property
+    def const(self):
+        const = self.__const
+        return const
+    def addConst(self, pontos):
+        self.__const += pontos
+        return print("Você ganhou {0} de pontos de Constituição! \nSua Constituição agora é {1} ".format(pontos, self.const))
+
+    def subConst(self, pontos):
+        self.__const -= pontos
+        return print("Você perdeu {0} de pontos de Constituição! \nSua Constituição agora é {1} ".format(pontos, self.const))
+
+    @property
+    def tam(self):
+        tam = self.__tam
+        return tam
+
+    def addTam(self, pontos):
+        self.__tam += pontos
+        return print(
+            "Você ganhou {0} de pontos de Tamanho! \nSeu Tamanho agora é {1} ".format(pontos, self.tam))
+
+    def subTam(self, pontos):
+        self.__tam -= pontos
+        return print(
+            "Você perdeu {0} de pontos de Tamanho! \nSeu Tamanho agora é {1} ".format(pontos, self.tam))
+
+    @property
+    def des(self):
+        ponto = self.__des
+        return ponto
+
+    def addDes(self, pontos):
+        self.__des += pontos
+        return print(
+            "Você ganhou {0} de pontos de Destreza! \nSua Destreza agora é {1} ".format(pontos, self.des))
+
+    def subDes(self, pontos):
+        self.__des -= pontos
+        return print(
+            "Você perdeu {0} de pontos de Destreza! \nSua Destreza agora é {1} ".format(pontos, self.des))
+
+    @property
+    def apa(self):
+        ponto = self.__apa
+        return ponto
+
+    def addApa(self, pontos):
+        self.__apa += pontos
+        return print(
+            "Você ganhou {0} de pontos de Aparencia! \nSua Aparencia agora é {1} ".format(pontos, self.apa))
+
+    def subApa(self, pontos):
+        self.__apa -= pontos
+        return print(
+            "Você perdeu {0} de pontos de Aparencia! \nSua Aparencia agora é {1} ".format(pontos, self.apa))
+
+    @property
+    def int(self):
+        ponto = self.__int
+        return ponto
+
+    def addInt(self, pontos):
+        self.__int += pontos
+        return print(
+            "Você ganhou {0} de pontos de Inteligência! \nSua Inteligência agora é {1} ".format(pontos, self.int))
+
+    def subInt(self, pontos):
+        self.__des -= pontos
+        return print(
+            "Você perdeu {0} de pontos de Inteligência! \nSua Inteligência agora é {1} ".format(pontos, self.int))
+
+    @property
+    def pod(self):
+        ponto = self.__pod
+        return ponto
+
+    def addPod(self, pontos):
+        self.__pod += pontos
+        return print(
+            "Você ganhou {0} de pontos de Poder! \nSeu Poder agora é {1} ".format(pontos, self.pod))
+
+    def subPod(self, pontos):
+        self.__des -= pontos
+        return print(
+            "Você perdeu {0} de pontos de Poder! \nSeu Poder agora é {1} ".format(pontos, self.pod))
+
+    @property
+    def edu(self):
+        ponto = self.__edu
+        return ponto
+
+    def addEdu(self, pontos):
+        self.__edu += pontos
+        return print(
+            "Você ganhou {0} de pontos de Educação! \n Sua Educação agora é {1} ".format(pontos, self.edu))
+
+    def subEdu(self, pontos):
+        self.__edu -= pontos
+        return print(
+            "Você perdeu {0} de pontos de Educação! \n Sua Educação agora é {1} ".format(pontos, self.edu))
 
     @property
     def pontosDeVida(self):

@@ -1,12 +1,12 @@
 
-def resposta():
+def resposta(sim,nao):
     resp = ""
-    while resp != "N":
+    while resp != sim:
         resp = input()
-        if resp == "S":
+        if resp == sim:
             resp = "N"
             return True
-        elif resp == "N":
+        elif resp == nao:
             resp = "N"
             return False
 
