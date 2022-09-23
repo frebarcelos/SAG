@@ -1,10 +1,8 @@
 
-
-
 class personagem:
 
     def __init__(self, nome):
-        self.__pontosDeVida = 100;
+        self.__pontosDeVida = 0;
         self.__nome = nome;
         self.__forca = 0;
         self.__const = 0;
@@ -15,7 +13,7 @@ class personagem:
         self.__pod = 0;
         self.__edu = 0;
         self.__mov = 0;
-        self.__san = 100;
+        self.__san = 0;
 
     @property
     def nome(self):
@@ -44,11 +42,13 @@ class personagem:
         return const
     def addConst(self, pontos):
         self.__const += pontos
-        return print("Você ganhou {0} de pontos de Constituição! \nSua Constituição agora é {1} ".format(pontos, self.const))
+        return print \
+            ("Você ganhou {0} de pontos de Constituição! \nSua Constituição agora é {1} ".format(pontos, self.const))
 
     def subConst(self, pontos):
         self.__const -= pontos
-        return print("Você perdeu {0} de pontos de Constituição! \nSua Constituição agora é {1} ".format(pontos, self.const))
+        return print \
+            ("Você perdeu {0} de pontos de Constituição! \nSua Constituição agora é {1} ".format(pontos, self.const))
 
     @property
     def tam(self):
@@ -146,39 +146,47 @@ class personagem:
         return pontos
 
     def CalculaPontosDeVida(self):
-        pontos = (self.__const + self.__tam)/2
-        return print("Você tem {} de pontos de Vida".format(pontos))
+        pontos = int((self.__const + self.__tam ) /2)
+        self.__pontosDeVida = pontos
+        return print("Você tem {} de pontos de Vida".format(self.pontosDeVida))
 
     def addPontosDeVida(self, pontos):
-        self.__pontosDeVidaa += pontos
+        self.__pontosDeVida += pontos
         return print("Você ganhou {0} de pontos de Pontos de Vida!! \n Seus Pontos de Vida agora são {1} ".format(pontos, self.pontosDeVida))
 
-    def addPontosDeVida(self, pontos):
+    def subPontosDeVida(self, pontos):
         self.__pontosDeVida -= pontos
         return print("Você ganhou {0} de pontos de Pontos de Vida!! \n Seus Pontos de Vida agora são {1} ".format(pontos, self.pontosDeVida))
 
 
+    @property
+    def san(self):
+        pontos = self.__san
+        return pontos
+    def CalculaSanidade(self):
+        pontos = (self.pod * 5)
+        self.__san = pontos
+        return print("Você tem {} de Sanidade".format(self.san))
 
+    def addPontosSanidade(self, pontos):
+        if self.san < 100:
+         self.__san += pontos
+         print("Você ganhou {0} de pontos de Sanidade!! \n Seus Pontos de Vida agora são {1} ".format(pontos, self.san))
+        else: print("Você tem os pontos maximos de sanidade")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def subPontosSanidade(self, pontos):
+        self.__san -= pontos
+        return print("Você ganhou {0} de pontos de Sanidade!! \n Seus Pontos de Vida agora são {1} ".format(pontos, self.san))
 
     def morreu(self):
-        if self.verificaPontosdeVida() > 0:
+        if self.pontosDeVida > 0:
             return False
         else:
-            print("Você Morreu")
+            print("Seus pontos de vida chegaram a 0 \nVocê Morreu")
             return True
-
+    def doido(self):
+        if self.san > 0:
+            return False
+        else:
+            print("Seus pontos de Sanidade chegaram a 0 \nVocê não mais controla seus sentidos")
+            return True

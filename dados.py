@@ -10,7 +10,7 @@ class dados():
         referencia = 0
         numeros = 0
         while referencia < 3:
-            input("Pressione qualquer tecla para rolar o dado")
+            input("Pressione Enter para rolar o dado")
             Numero = random.randint(1,6)
             print("Você tirou o numero {}".format(Numero))
             numeros = (Numero + numeros)
