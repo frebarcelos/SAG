@@ -1,6 +1,9 @@
+# encoding: utf-8
+
 from personagem import personagem
 from resposta import resposta
 from dados import dados
+from arvoreDecisao import arvoreDecisao
 
 variavel = 0
 
@@ -260,6 +263,15 @@ while variavel == 0:
     personagem.CalculaPontosDeVida()
     personagem.CalculaSanidade()
     input("Saindo ....")
+    input("Um resumo rapido sobre rolagem de dados")
+    input("A rolagem de dados é feita multiplicando a habilidade por 5")
+    input("É rolando o dado, o valor do dado precisa ser menor que a habilidade")
+    input("Exemplo: se o jogador possui 10 em força, será feito 10*5 = 50")
+    input("Digamos que o jogar role 40 no dado, ele tera passado no teste")
+    input("Se o resto for maior que 40, será considerado uma falha critica")
+    input("Isso pode ser calculado diminuindo o poder de habilidade ao rolamento ")
+    input("Exemplo 8 de habilidade, 8*5 = 40, com um dado com rolamento 80, temos 80-40 = 40 = falha critica")
+    input("Uma falha critica faz com que o jogador tenha mais consequencias pela sua falha na habilidade")
     input("Presione enter para começar a história")
     while personagem.pontosDeVida != 0:
         input("A noite parece começar calma, embora as semanas chuvosas que deixam o clima úmido e pegajoso")
@@ -268,7 +280,78 @@ while variavel == 0:
                 personagem.nome))
         input("sua jaqueta já se encontra parcialmente encharcada e seus tênis além de água também possuem barro. ")
         input("{}:  -Isso que estou apenas indo, imagina depois dessa aula chata".format(personagem.nome))
-        input("seus pontos de vida são: {}".format(personagem.pontosDeVida))
+        dados.testeDehabilidade(personagem.forca)
+        input(f'{personagem.nome} continua caminhando ')
+        input(f'-ohh {personagem.nome}, como você esta ? indo para aula ?')
+        resposta = input('1 - Oi, estou bem e você 2-Ãn ? 3- Indo, como uma vaca vai para o abate')
+        arvoreDecisao(resposta, "1 2 3")
+        if resposta == "1":
+            input('Desconhecido - Estou bem também um pouco descontente com o clima haha')
+        elif resposta == "2":
+            input('Desconhecido - Você não deve estar conseguindo me ver pela chuva')
+        else:
+            input("Desconhecido - Dramatico e preciso como sempre")
+        input('Francisco - Não sei se lembra de mim, sou seu colega Francisco')
+        input('Francisco - Sempre bom ver uma cara conhecida')
+        input('Francisco parece bem animado em ver você, apesar da chuva e frio')
+        input(
+            'Francisco - Pensei que iria acabar sendo somente eu na aula de hoje, visto a chuva e ser uma quarta-feira')
+        input('Francisco - Essa cadeira esta muito complexa, não quis faltar a aula e arriscar entender menos ainda')
+        input('Francisco sorri como se estivesse falando de algo deveras interessante')
+        input('Talvez você devesse ter o animo de Francisco')
+        input('Vocês continuam a caminhada pelo campus, passando pelo grande portal da entrada')
+        input('Ele é um arco ornado com pedras com os dizeres:')
+        input('"O sábio pode descobrir o mundo sem transpor a sua porta. Vê sem olhar, realiza sem agir."')
+        input('Sempre penso no que essa frase quer dizer, nunca encontro uma resposta curta')
+        input('Passamos pelas outras partes do campus ate chegar ao centro de convivencias')
+        input('Chegando lá encontramos alguns colegas da computação e fomos para a aula')
+        input('Saindo da aula, com mais sonos do que entrei, eu parecia um zumbi indo para casa')
+        input('Estava quase no portal, quando enxerguei uma pequena luz em um dos predios antigos')
+        resp = 3
+        cont = 3
+        while cont == 3:
+            resp = input('1 - investigar 2 - seguir caminho:  ')
+            resp = (arvoreDecisao(resp, "1 2"))
+            if resp == "2":
+                print("Você não consegue simplesmente seguir seu caminho")
+            else:
+                cont = 1
+        input("Você se aproxima ... ")
+        input("A fagulha brilha na escuridão")
+        input("É um brilho vermelho como o fogo, você pensa em como com a chuva aquilo parece acesso")
+        input("Você encherga um simbolo no chão")
+        input("O que você deseja fazer ? 1 - investigar simbolo 2 - focar na fagulha 3 - observar em volta")
+        resp = (arvoreDecisao(resp,"1 2 3"))
+        if resp == "1":
+            input("Você esta tentando verificar o simbolo no chão, você necessita de conhecimento para saber qual é o simbolo")
+            dados.probabilidade(personagem.edu)
+            input("Pressione enter para rolar")
+            x = dados.testeDehabilidade(personagem.edu)
+            personagem.subPontosSanidade(x)
+            if personagem.doido(): break
+            if x > 0:
+                input('O simbolo no chão é algo que se assemelha a um pentagrama, mas esse é difeerenete ')
+                input('Esse representa um simbolo de proteção, estava protegendo a fagulha ou algo em volta dela')
+            else:
+                input('Algo perturbou a sua mente, aquele simbolo não deveria estar ali')
+                input('Aquela fagulha não deveria estar ali')
+        elif resp == "2":
+            input("Você foca na fagulha, tenta entender o que esta acontecendo")
+            input('Algo parece estranho, algo não faz sentido')
+            input("Sua sanidade esta sendo testada, pressione enter para rolar o dado")
+            dados.probabilidade(personagem.san)
+            personagem.subPontosSanidade(dados.testeDehabilidade(personagem.san))
+        else:
+            input('Você tenta olhar em volta, mas não consegue')
+            input("Seu foco passa a ser somente a fagulha")
+            input('Em uma nova tentativa de Olhar você encontra algo')
+            input('A algo ou alguem por detrásda fagulha')
+
+
+
+
+
+
 
     texto = input("Recomeçar? S/N: ")
     if texto == "S":

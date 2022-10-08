@@ -12,3 +12,8 @@ def resposta(sim,nao):
 
         else:
             print("Digite uma resposta Valida")
+
+
+
+
+

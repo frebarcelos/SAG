@@ -171,12 +171,13 @@ class personagem:
     def addPontosSanidade(self, pontos):
         if self.san < 100:
          self.__san += pontos
-         print("Você ganhou {0} de pontos de Sanidade!! \n Seus Pontos de Vida agora são {1} ".format(pontos, self.san))
+         print("Você ganhou {0} de pontos de Sanidade!! \nSeus Pontos de Sanidade agora são {1} ".format(pontos, self.san))
         else: print("Você tem os pontos maximos de sanidade")
 
     def subPontosSanidade(self, pontos):
         self.__san -= pontos
-        return print("Você ganhou {0} de pontos de Sanidade!! \n Seus Pontos de Vida agora são {1} ".format(pontos, self.san))
+        if pontos > 0:
+            return print("Você perdeu {0} de pontos de Sanidade!! \nSeus Pontos de Sanidade agora são {1} ".format(pontos, self.san))
 
     def morreu(self):
         if self.pontosDeVida > 0:
